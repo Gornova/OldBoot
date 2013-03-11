@@ -6,6 +6,12 @@ OldBoot is a new way to find hiker fellows and make friends.
 
 Very very work in progress.
 
+## Demo
+
+http://glacial-inlet-7179.herokuapp.com/
+
+(it might not work)
+
 ## Features/wishlist
 
 1. Make it easy to find occasional hiker fellows.
