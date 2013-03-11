@@ -1,0 +1,52 @@
+<template name="page">
+{{#if showPage}} 
+    <div class="container">
+
+        
+        <div id="menu">
+            <ul class="nav nav-pills">
+                <li class="active"><a  href="#" class="filter" data-filter='{"start_at":{ "$gte":{{now}} } }' data-sort="start_at asc">Upcomings</a></li>
+                <li><a href="#" class="filter" data-filter='{"start_at":{ "$gte":{{now}} } }' data-sort="views desc">Popular</a></li>
+                <li><a href="#" class="filter" data-filter='{"start_at":{ "$gte":{{now}} } }' data-sort="created_at desc">New</a></li>
+                {{#if currentUser}}
+                <li><a href="#" class="filter" data-filter='{"start_at":{ "$gte":{{now}} }, "read_by":{ "$ne":"{{currentUser._id}}" } }' data-sort="created_at desc"><i class="icon-bookmark"></i> Unread</a></li>
+                <li><a href="#" class="filter" data-filter='{"start_at":{ "$gte":{{now}} }, "liked_by":{ "$in":[ "{{currentUser._id}}" ] } }' data-sort="likes desc"><i class="icon-star"></i> Favorites</a></li>
+                {{/if}}
+                <li><a href="#" >Categories</a></li>
+                {{#if currentUser}}
+                <li class="pull-right"><a href="#" class="btn create" data-toggle="collapse" data-target="#createTripPanel"><i class="icon-plus-sign"></i> Create Trip</a></li>
+                {{/if}}
+            </ul>
+        </div>
+        <div id="page-content">
+            {{> trips}}
+        </div>
+        
+
+
+        <!-- login window, invisible at start -->
+        <div id="loginWindow" class="modal hide fade">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Login</h3>
+            </div>
+            <div class="modal-body">
+                <p>Please choose how to login.</p>
+                {{loginButtons}}
+            </div>
+        </div>
+        
+        
+
+
+    </div> <!-- /container -->  
+ 
+    <div data-spy="affix" style="top:250px;width:100%;bottom:0;">
+        <div id="createTripPanel" class="collapse" >
+            {{> createTrip}}
+        </div>
+    </div>     
+    
+{{/if}}
+    
+</template>

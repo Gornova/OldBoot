@@ -1,0 +1,55 @@
+<template name="trips">
+    
+    
+    
+    
+    <table class="table table-hover table-bordered table-striped table-condensed ">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Partecipants</th>
+                <th>Comments</th>
+                <th>Likes</th>
+                <th>Views</th>
+                <th>Activity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each upcomings}}
+            <tr data-id="{{_id}}">
+                <td>
+                    {{#if currentUser}}
+                        {{#if isStarred _id}}
+                            <div class="star-rating"><s class="full"></s> {{title}} </div>
+                        {{else}}
+                            <div class="star-rating"><s class="empty"></s> {{title}} </div>
+                        {{/if}}
+                         
+                    {{else}}
+                        {{title}}
+                    {{/if}}
+                </td>
+                <td>{{> categories}}</td>
+                <td>{{> partecipants}}</td>
+                <td>{{comments.length}}</td>
+                <td>{{likes}}</td>
+                <td>{{views}}</td>
+                <td></td>
+            </tr>
+            {{/each}}       
+        </tbody>
+    </table>    
+</template>
+
+<template name="categories">
+    {{#each categories}}
+        <span class="label label-success">{{this}}</span>
+    {{/each}}
+</template>
+
+<template name="partecipants">
+    {{#each partecipants}}
+        <img src="http://placehold.it/20x20" title="{{this}}" />
+    {{/each}}
+</template>

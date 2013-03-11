@@ -1,0 +1,54 @@
+
+<head>
+    <title>OldBoot</title>
+    <style>
+        body {
+            padding-top: 40px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+        /* stars for fav items 
+         * see http://jsfiddle.net/RpfLa/135/
+         */
+        .star-rating s.empty:hover {
+            color: red;
+        }
+        .star-rating s.empty{
+            color: black;
+            font-size: 16px;
+            cursor: default;
+            text-decoration: none;
+            line-height: 16px;
+        }
+        .star-rating s.full{
+            color: red;
+            font-size: 16px;
+            cursor: default;
+            text-decoration: none;
+            line-height: 16px;
+        }
+        .star-rating {
+            padding: 2px;
+        }
+        .star-rating s.empty:hover:before{
+            content: "\2605";
+        }
+        .star-rating s.empty:before {
+            content: "\2606";
+        }
+        .star-rating s.full:hover:before {
+            content: "\2606";
+        }
+        .star-rating s.full:before {
+            content: "\2605";
+        }
+    </style> 
+
+</head>
+
+<body>
+    {{> topbar}}
+    {{> actionbar}}
+    {{> page}}     
+    {{> about}}
+    {{> contact}}
+</body>
+

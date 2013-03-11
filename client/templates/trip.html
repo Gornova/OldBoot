@@ -1,0 +1,37 @@
+<template name="createTrip">
+
+    <div class="well">
+        
+        <div class="container">
+        <p>Create a new trip</p>
+
+        <div class="row">
+            <div class="span6">
+                <form>
+                    <input type="text" placeholder="Write your title here." class="input-xxlarge">
+                    <input type="text" placeholder="Start writing to add categories." class="input-xxlarge">
+                    <textarea rows="10" class="editable input-xxlarge"></textarea>      
+                </form>                
+            </div>
+            <div class="span6" id="mapPanel" class="collapse" >
+                <div id="map" style="height: 330px; width: 550px"></div>
+            </div>
+        </div>
+
+
+        <div >
+            <div>
+                <a href="#" class="btn btn-primary">Create</a>
+                <a href="#" class="btn">Cancel</a> 
+            </div>
+            <div class="pull-right">
+                <a href="#" data-toggle="collapse" data-target="#mapPanel">Hide map</a>
+            </div>           
+        </div>            
+        </div>
+
+
+    </div>
+
+
+</template>

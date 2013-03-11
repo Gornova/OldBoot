@@ -1,0 +1,43 @@
+<template name="actionbar">
+{{#if showActionbar}}
+    <div id="main-navbar" class="navbar" style="width: 100%"> 
+        <div class="navbar-inner">
+            <a class="brand" href="#">OldBoot Logo</a>
+
+            <div class="pull-right">
+
+                <ul class="nav">
+                    {{#if isGuest}}
+                        <li>
+                            <button class="action btn btn-success" data-action="login">Log In</button>  
+                            
+                        </li>
+                        
+                        <li>
+                            &nbsp;&nbsp;&nbsp;
+                        </li>
+                    {{else}}
+                        <li>
+                            <a href="#">{{currentUser.profile.name}}</a>
+                        </li>
+                    {{/if}}
+                    {{#if currentUser}}
+                        <li>
+                            <button class="action btn" data-action="notify"><i class="icon-comment"></i></button>
+                        </li>
+                    {{/if}}                    
+                    <li> <button class="action btn" data-action="search"><i class="icon-search"></i></button></li>
+                    {{#if currentUser}}
+                        <li>
+                            <button class="action btn" data-action="profile"><i class="icon-user"></i></button>
+                        </li>
+                        <li>
+                            <button class="action btn" data-action="logout"><i class="icon-off"></i></button>
+                        </li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+    </div>
+{{/if}}
+</template>
