@@ -2,7 +2,7 @@
     "name": "OldBootHeroku",
 	"version": "0.0.1",
 	"engines": {
-      "node": "0.8.18"
+      "node": "0.8.*"
     },
 	"dependencies": {
 	    "charlatan": "0.1.3"
