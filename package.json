@@ -8,6 +8,6 @@
 	    "charlatan": "0.1.3"
 	},
 	"scripts": {
-		"install": "mkdir public && mv node_modules public/node_modules"
+		"install": "mv node_modules public/node_modules"
 	}
 }
