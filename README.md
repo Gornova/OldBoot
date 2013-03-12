@@ -6,6 +6,10 @@ OldBoot is a new way to find hiker fellows and make friends.
 
 Very very work in progress.
 
+## Demo
+
+[Demo Heroku App](http://oldboot.herokuapp.com/)
+
 ## Features/wishlist
 
 1. Make it easy to find occasional hiker fellows.
@@ -17,7 +21,9 @@ Very very work in progress.
 This is my pet project where I can experiment new things. In particular, I want to understand how to build large scale web applications without using the Model-View-Controller pattern. Some ideas come from this great paper:
 
 Samson Abramsky
+
 *Retracing some paths in Process Algebra*
+
 1996
 
 ## Credits

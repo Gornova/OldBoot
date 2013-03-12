@@ -62,15 +62,17 @@ App = {
                         return Session.get('sort');
                     };
                 
+                    function getFilter(){
+                        if (!Session.get('filter')){
+                            return {'start_at':{ '$gte':(new Date).getTime() } };
+                        }
+                        return Session.get('filter');
+                    };
                 
                     Meteor.subscribe( 'trips' );
                     var trips = new Meteor.Collection( 'trips' );
                     Template.trips.upcomings = function () {
-                        if (!Session.get('filter')){
-                            Session.set('filter', {'start_at':{ '$gte':(new Date).getTime() } });
-                        }
-                       
-                        var filter =  Session.get('filter'); 
+                        var filter =  getFilter(); 
                         return trips.find( 
                         filter, {
                             sort: getSort()

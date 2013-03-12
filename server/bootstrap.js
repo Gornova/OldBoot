@@ -1,5 +1,6 @@
 Meteor.startup(function () {
     
+    // see http://stackoverflow.com/questions/10476170/how-can-i-deploy-node-modules-in-a-meteor-app-on-meteor-com
     
     var require = __meteor_bootstrap__.require;
     var path = require('path');
