@@ -1,5 +1,16 @@
 Meteor.startup(function () {
     
+    
+    var require = __meteor_bootstrap__.require;
+    var path = require('path');
+    var base = path.resolve('.');
+    var isBundle = path.existsSync(base + '/bundle');
+    var modulePath = base + (isBundle ? '/bundle/static' : '/public') + '/node_modules';
+
+    
+    var faker = require(modulePath + '/charlatan'); 
+    
+    
     Trips = new Meteor.Collection("trips");
     Meteor.publish("trips", function () {
         return Trips.find(); // everything
@@ -7,7 +18,7 @@ Meteor.startup(function () {
 	
     if ( Trips.find().count() === 0 ){
        
-       var faker = __meteor_bootstrap__.require('charlatan'); 
+       
        
        // create some random data
        
