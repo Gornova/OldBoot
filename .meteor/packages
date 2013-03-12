@@ -9,6 +9,4 @@ bootstrap
 jquery
 underscore
 accounts-facebook
-accounts-google
-accounts-twitter
 accounts-ui
