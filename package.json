@@ -6,8 +6,5 @@
     },
 	"dependencies": {
 	    "charlatan": "0.1.3"
-	},
-	"scripts": {
-		"install": "mv node_modules public/node_modules"
 	}
 }
