@@ -185,9 +185,21 @@ App = {
                             Template.createTrip.rendered = function(){
                                 
                                 // create start and end datetime pickers
-                                $('[name="startDate"]').datepicker({ dateFormat: 'dd/mm/yy' });
+                                $('[name="startDate"]').datepicker({
+                                    dateFormat: 'dd/mm/yy',
+                                    onSelect: function(){
+                                        // force blur in order to trigger validation
+                                        $('[name="startDate"]').blur();
+                                    }
+                                });
                                 $('[name="startTime"]').timepicker();
-                                $('[name="endDate"]').datepicker({ dateFormat: 'dd/mm/yy' });
+                                $('[name="endDate"]').datepicker({ 
+                                    dateFormat: 'dd/mm/yy',
+                                    onSelect: function(){
+                                        // force blur in order to trigger validation
+                                        $('[name="endDate"]').blur();
+                                    }
+                                });
                                 $('[name="endTime"]').timepicker();
                                 
                                 $.validator.addMethod("dateIntervalValidator", function(value, element) {
@@ -200,6 +212,7 @@ App = {
                                             ' ' + ( $('[name="endTime"]').val() === '' ? '00:00' : $('[name="endTime"]').val() );
                                     return moment(start, format).valueOf() < moment(end, format).valueOf();
                                 }, "* end date must be greater than start date");
+                                
 
                                 $("#createTripForm").validate({
                                     // do not display error message
@@ -211,6 +224,13 @@ App = {
                                             dateIntervalValidator: {
                                                 depends: function(element) {
                                                     return $("#startDate").val() !== '';
+                                                }
+                                            }
+                                        },
+                                        endTime:{
+                                            dateIntervalValidator: {
+                                                depends: function(element) {
+                                                    return $("#startTime").val() !== '';
                                                 }
                                             }
                                         }
@@ -243,13 +263,13 @@ App = {
 
 
                             Template.createTrip.events({
-                                /*'keyup, change': function(event){
+                                'blur, change': function(event){
                                     if ( $("#createTripForm").valid() ){
                                         $('#createTripBtn').removeClass('disabled').addClass('create');
                                     } else {
                                         $('#createTripBtn').addClass('disabled').removeClass('create');
                                     }
-                                },*/
+                                },
                                 'click .create': function(event, template){
 
                                     // TODO normalize categories
