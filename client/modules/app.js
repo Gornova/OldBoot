@@ -180,7 +180,44 @@ App = {
                         }), /* end list-trips */
                         Cat.define('create-trip', function(context){
 
-                            
+                            var form = {
+                              
+                              format : 'DD/MM/YY HH:mm',
+                              getTitle: function(){
+                                  return $('[name="title"]').val();
+                              },
+                              getMilliseconds: function(datetime){
+                                  return moment( datetime, this.format).valueOf();
+                              },
+                              getStartDateTime: function(){
+                                 return this.getMilliseconds(
+                                        $('[name="startDate"]').val() + 
+                                            ' ' + ( $('[name="startTime"]').val() === '' ? '00:00' : $('[name="startTime"]').val() ));
+                              },
+                              getEndDateTime: function(){
+                                 return this.getMilliseconds(
+                                        $('[name="endDate"]').val() + 
+                                            ' ' + ( $('[name="endTime"]').val() === '' ? '00:00' : $('[name="endTime"]').val() ));  
+                              },
+                              getCategories: function(){
+                                  return _.map( $('[name="categories"]').val().split(','), function(cat){
+                                     return cat.trim();  
+                                  });
+                              },
+                              getDescription: function(){
+                                  return $('.editable').data("wysihtml5").editor.getValue();
+                              }, 
+                              clean: function(){
+                                  $('[name="title"]').val('');
+                                  $('[name="startDate"]').val('');
+                                  $('[name="startTime"]').val('');
+                                  $('[name="endDate"]').val('');
+                                  $('[name="endTime"]').val('');
+                                  $('[name="categories"]').val('');
+                                  $('.editable').data("wysihtml5").editor.clear();
+                              }
+                              
+                            };
 
                             Template.createTrip.rendered = function(){
                                 
@@ -272,26 +309,26 @@ App = {
                                 },
                                 'click .create': function(event, template){
 
-                                    // TODO normalize categories
-                                    // TODO create dates
-
+                                    // create a trip object from field values
                                     var trip = {
-                                        title: template.find('#title').value,
-                                        categories: template.find('#categories').value.split(','),
-                                        description: $('.editable').data("wysihtml5").editor.getValue(),
+                                        title: form.getTitle(),
+                                        categories: form.getCategories(),
+                                        description: form.getDescription(),
                                         created_at: (new Date).getTime(),
                                         updated_at: (new Date).getTime(),
                                         read_by: [],
                                         liked_by: [],
                                         partecipants: [],
                                         comments: [],
-                                        start_at: template.find('#startDate').value,
-                                        end_at: template.find('#endDate').value,
+                                        start_at: form.getStartDateTime(),
+                                        end_at: form.getEndDateTime(),
                                         author: Meteor.userId()
                                     }
-                                    // TODO clean on finish
+                                    console.log( trip );
+                                    // clean on finish
+                                    form.clean();
                                     // save trip
-                                    // context.trigger('add', trip);
+                                    context.trigger('add', trip);
                                     // close outer panel (in theory I should send an event
                                     $("#createTripPanel").collapse('hide');
 
