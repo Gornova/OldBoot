@@ -28,7 +28,7 @@ Samson Abramsky
 
 ## Credits
 
-Thanks to Marte Gornova for useful and extensive discussions.
+Thanks to [Marte](https://github.com/Gornova) for useful and extensive discussions.
 
 The current GUI is a humble clone of [Discourse](https://github.com/discourse/discourse) rewritten in Meteor.js.
 

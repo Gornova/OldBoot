@@ -331,10 +331,6 @@ App = {
                                     context.trigger('add', trip);
                                     // close outer panel (in theory I should send an event
                                     $("#createTripPanel").collapse('hide');
-
-
-
-
                                 },
                                 'click .cancel': function(event, template){
                                     // clean form
@@ -346,7 +342,19 @@ App = {
                                     $("#createTripPanel").collapse('hide');
                                 },
                                 'click .toggle-map': function(event){
-
+                                    var map = $('#map');
+                                    var form = $('#createTripForm')
+                                    if ( map.css('display')==='none'){
+                                         map.css('display', 'block');
+                                         $('a.toggle-map').empty().append('Hide');
+                                         $('#leftPanel').prepend( form );
+                                    } else {
+                                         map.css('display', 'none');
+                                         $('a.toggle-map').empty().append('Show');
+                                         map.parent().append( form );
+                                    }
+                                    
+                                    
                                 }
                             });
 
