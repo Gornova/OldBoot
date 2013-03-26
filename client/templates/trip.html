@@ -7,10 +7,15 @@
 
         <div class="row">
             <div class="span6">
-                <form>
-                    <input type="text" placeholder="Write your title here." class="input-xxlarge">
-                    <input type="text" placeholder="Start writing to add categories." class="input-xxlarge">
-                    <textarea rows="10" class="editable input-xxlarge"></textarea>      
+                <form id="createTripForm">
+                    <input name="title" type="text" placeholder="Write your title here." class="input-xxlarge required">
+                    <input name="startDate" placeholder="Click to add start date." type="text" class="required">
+                    &nbsp;<input name="startTime" placeholder="Click to add start time." type="text" class="required">
+                    <input name="endDate" placeholder="Click to add end date." type="text" >
+                    &nbsp;<input name="endTime" placeholder="Click to add end time." type="text" class="required">
+                    
+                    <textarea name="content" rows="10" class="editable input-xxlarge"></textarea>      
+                    <input name="categories" type="text" placeholder="Start writing to add categories." class="input-xxlarge required">
                 </form>                
             </div>
             <div class="span6" id="mapPanel" class="collapse" >
@@ -21,11 +26,11 @@
 
         <div >
             <div>
-                <a href="#" class="btn btn-primary">Create</a>
-                <a href="#" class="btn">Cancel</a> 
+                <a id="createTripBtn" href="#" class="btn btn-primary create disabled">Create</a>
+                <a href="#" class="btn cancel">Cancel</a> 
             </div>
             <div class="pull-right">
-                <a href="#" data-toggle="collapse" data-target="#mapPanel">Hide map</a>
+                <a href="#" class="toggle-map" data-toggle="collapse" data-target="#mapPanel">Hide map</a>
             </div>           
         </div>            
         </div>
