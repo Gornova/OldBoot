@@ -7,12 +7,17 @@
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Category</th>
+                <th>Categories</th>
+                
+                <th>Author</th>
                 <th>Partecipants</th>
+                
                 <th>Comments</th>
                 <th>Likes</th>
                 <th>Views</th>
-                <th>Activity</th>
+                
+                <th>Start</th>
+                <th>Duration</th>
             </tr>
         </thead>
         <tbody>
@@ -31,11 +36,18 @@
                     {{/if}}
                 </td>
                 <td>{{> categories}}</td>
+                
+                
+                <td>{{> author}}</td>
                 <td>{{> partecipants}}</td>
+                
                 <td>{{comments.length}}</td>
-                <td>{{likes}}</td>
-                <td>{{views}}</td>
-                <td></td>
+                <td>{{liked_by.length}}</td>
+                <td>{{read_by.length}}</td>
+                
+                <td>{{> times}}</td>
+                <td>{{> duration}}</td>
+                
             </tr>
             {{/each}}       
         </tbody>
@@ -48,8 +60,20 @@
     {{/each}}
 </template>
 
+<template name="times">
+    {{prettyFromNow start_at}}
+</template>
+
+<template name="duration">
+    {{prettyDuration start_at end_at}}
+</template>
+
+<template name="author"> 
+   <img id="{{author}}" src="{{url author}}" title="{{name author}}" />
+</template>
+
 <template name="partecipants">
     {{#each partecipants}}
-        <img src="http://placehold.it/20x20" title="{{this}}" />
+        <img src="{{url this}}" title="{{name this}}" />
     {{/each}}
 </template>

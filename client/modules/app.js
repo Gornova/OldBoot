@@ -161,6 +161,36 @@ App = {
                                     }
                                 }
                             });
+                            
+                            Template.times.prettyFromNow = function(time ){
+                               return moment(time).fromNow();
+                            };
+                            
+                            Template.duration.prettyDuration = function( startTime, endTime ){
+                               return moment.duration(endTime-startTime).humanize();
+                            };
+
+                            Template.author.name = function( userId ){
+                                return Meteor.users.findOne({'_id':userId}).profile.name;
+                            };
+                            
+                            Template.author.url = function( userId ){
+                                Meteor.call('fbUrl', userId, function(err, url){ 
+                                    $('img[id="'+ userId +'"]').attr('src', url).css('width', '20px');
+                                });
+                                return '';
+                            };
+                            
+                            Template.partecipants.name = function( userId ){
+                                return Meteor.users.findOne({'_id':userId}).profile.name;
+                            };
+                            
+                            Template.partecipants.url = function( userId ){
+                                Meteor.call('fbUrl', userId, function(err, url){ 
+                                    $('img[id="'+ userId +'"]').attr('src', url).css('width', '20px');
+                                });
+                                return '';
+                            };
 
                             Template.trips.isStarred = function( tripId ){
                                 var results = trips.find( {
