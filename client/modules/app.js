@@ -212,7 +212,7 @@ App = {
 
                             var form = {
                               
-                              format : 'DD/MM/YY HH:mm',
+                              format : 'DD/MM/YYYY HH:mm',
                               getTitle: function(){
                                   return $('[name="title"]').val();
                               },
